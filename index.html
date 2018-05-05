@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel=stylesheet href="css/style.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>New Orleans, LA - Restaurants Map</title>
+  </head>
+  <body>
+
+    <div id="menu">
+      <div id="menu-content">
+        <form class="form-inline" id="form-search" data-bind="submit: filterVenues">
+            <input type="text" class="form-control" data-bind="value: filter" id="filter-input" autofocus>
+            <button type="submit" id="submit-button" class="btn btn-primary">Filter</button>
+        </form>
+        <hr></hr>
+        <div><img src="img/Powered-by-Foursquare-full-color-300.png" alt="Powered by Foursquare" width="280px"></img></div>
+        <p id="venue-list-detail" data-bind="text: venueListDetail"></p>
+        <div class="list-group" id="venue-list"  data-bind="foreach: filteredVenueList">
+          <a href="#" class="list-group-item" data-bind="click: $parent.selectMarker">
+            <p data-bind="text: name"></p><small data-bind="text: category"></small>
+            <br><small><span data-bind="text: checkinsText"></span></small>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel">
+      <header>
+    		<a href="#" class="menu-icon"><i class="material-icons">dehaze</i></a>
+    	  <h1>New Orleans, LA - Restaurants Map</h1>
+  	  </header>
+      <!-- Google map div element -->
+      <div id="map"></div>
+    </div>
+
+    <script src="js/lib/jquery-3.3.1.min.js"></script>
+    <script src="js/lib/slideout.min.js"></script>
+    <script src="js/lib/knockout-3.2.0.js"></script>
+    <script src="js/app.js"></script>
+    <!-- Load the google maps api, load it async and initMap is callback, version 3 -->
+    <script async defer
+      src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB4OC2OMIRYr5chaMwZC4iFQXSTdCMV6rs&v=3&callback=initMap" onerror="gMapsError()">
+    </script>
+
+  </body>
+</html>
